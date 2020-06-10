@@ -40,9 +40,7 @@ List<Map<String, dynamic>> toMapArray<T>(List<T> models) {
 
 List<T> fromMapArray<T>(List<Map<String, dynamic>> modelmaps) {
   var modelSerializer = _getModelSerializer<T>();
-  return modelmaps
-      .map((modelMap) => modelSerializer.fromMap(modelMap))
-      .toList();
+  return modelmaps.map((modelMap) => modelSerializer.fromMap(modelMap)).toList();
 }
 
 Serializer<T> _getModelSerializer<T>() {

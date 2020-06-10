@@ -1,4 +1,4 @@
-import 'package:ains_open_dart/src//models/api/http_client_status_code.dart';
+import 'package:ains_open_dart/src/models/api/http_client_status_code.dart';
 
 class HttpClientModel<T> {
   T model;

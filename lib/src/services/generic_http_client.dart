@@ -68,7 +68,7 @@ class HttpClient implements BaseHttpClient {
     return isArray ? fromJsonArrayString<T>(data) : fromJsonString<T>(data);
   }
 
-  Future<HttpClientModel> _buildClientModel<T>(
+  Future<HttpClientModel<T>> _buildClientModel<T>(
       {Future<Response> Function() dioHttpAction, bool isArray = false}
       ) async {
     HttpClientModel<T> _responseModel;
@@ -93,8 +93,7 @@ class HttpClient implements BaseHttpClient {
     return _responseModel;
   }
 
-  Future<HttpClientModel<T>> _baseGet<T>(String url,
-      {bool isArray = false}) async {
+  Future<HttpClientModel<T>> _baseGet<T>(String url, {bool isArray = false}) async {
     return _buildClientModel<T>(
         dioHttpAction: () {
           return dio.get(url);
@@ -103,12 +102,14 @@ class HttpClient implements BaseHttpClient {
     );
   }
 
+  @override
   Future<HttpClientModel<T>> get<T>(String url) => _baseGet(url);
 
+  @override
   Future<HttpClientModel<T>> getAll<T>(String url) => _baseGet(url, isArray: true);
 
-  Future<HttpClientModel<T>> post<T>(T data, String url,
-      {bool isArray = false}) {
+  @override
+  Future<HttpClientModel<T>> post<T>(T data, String url, {bool isArray = false}) {
     return _buildClientModel<T>(
         dioHttpAction: () {
           return dio.post(url, data: data);
@@ -116,8 +117,7 @@ class HttpClient implements BaseHttpClient {
         isArray: isArray);
   }
 
-  Future<HttpClientModel<T>> put<T>(T data, String url,
-      {bool isArray = false}) {
+  Future<HttpClientModel<T>> put<T>(T data, String url, {bool isArray = false}) {
     return _buildClientModel<T>(
         dioHttpAction: () {
           return dio.put(url, data: data);
@@ -125,8 +125,7 @@ class HttpClient implements BaseHttpClient {
         isArray: isArray);
   }
 
-  Future<HttpClientModel<T>> delete<T>(T data, String url,
-      {bool isArray = false}) {
+  Future<HttpClientModel<T>> delete<T>(T data, String url, {bool isArray = false}) {
     return _buildClientModel<T>(
         dioHttpAction: () {
           return dio.delete(url, data: data);
