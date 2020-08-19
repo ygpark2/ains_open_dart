@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:ains_open_dart/src//models/api/http_client_model.dart';
+import 'package:ains_open_dart/src/models/api/http_client_model.dart';
 
 abstract class BaseHttpClient {
   Future<HttpClientModel<T>> get<T>(String url);

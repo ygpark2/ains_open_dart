@@ -65,7 +65,7 @@ class HttpClient implements BaseHttpClient {
   }
 
   T _parseJson<T>(String data, {bool isArray}) {
-    return isArray ? fromJsonArrayString<T>(data) : fromJsonString<T>(data);
+    return isArray ? fromJsonArrayString<T>(data) as T : fromJsonString<T>(data) as T;
   }
 
   Future<HttpClientModel<T>> _buildClientModel<T>(
@@ -78,8 +78,7 @@ class HttpClient implements BaseHttpClient {
         _responseModel = HttpClientModel<T>(
             error: HttpClientStatusCode.NONE,
             model: await compute<String, T>(
-                    (responseData) => _parseJson<T>(responseData, isArray: isArray),
-                response.data));
+                    (responseData) => _parseJson<T>(responseData, isArray: isArray), response.data.toString()));
       } else {
         _responseModel = HttpClientModel(
           error: httpErrorVal[response?.statusCode] ?? HttpClientStatusCode.ERROR,

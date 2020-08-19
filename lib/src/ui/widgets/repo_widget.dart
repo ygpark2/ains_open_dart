@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_starter/constants/localizations.dart';
+import 'package:ains_open_dart/src/constants/localizations.dart';
 import 'package:ains_open_dart/src/models/repo.dart';
 import 'package:sprintf/sprintf.dart';
 

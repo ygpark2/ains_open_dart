@@ -1,5 +1,5 @@
 import 'package:ains_open_dart/src/services/base_http_client.dart';
-import 'package:ains_open_dart/src/services/generic_http_client.dart';
+import 'package:ains_open_dart/src/services/http_client.dart';
 
 class SampleService {
 

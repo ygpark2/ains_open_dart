@@ -11,11 +11,11 @@ class BuiltValueConverter extends JsonConverter {
   BuiltValueConverter(this.serializers, {this.errorType});
 
   T _deserialize<T>(dynamic value) {
-    var serializer;
+    Serializer<T> serializer;
     if (value is Map && value.containsKey('\$')) {
-      serializer = serializers.serializerForWireName(value['\$']);
+      serializer = serializers.serializerForWireName(value['\$'].toString()) as Serializer<T>;
     }
-    serializer ??= serializers.serializerForType(T);
+    serializer ??= serializers.serializerForType(T) as Serializer<T>;
 
     if (serializer == null) {
       throw 'Serializer not found for $T';

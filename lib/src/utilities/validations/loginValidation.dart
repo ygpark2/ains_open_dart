@@ -1,8 +1,8 @@
-import 'package:ains_open_dart/src//constants/Dictionary.dart';
+import 'package:ains_open_dart/src/constants/Dictionary.dart';
 
 class LoginValidations {
   static String usernameValidation(String val) {
-    RegExp regex = RegExp(r'^[a-z0-9_./]+$');
+    var regex = RegExp(r'^[a-z0-9_./]+$');
 
     if (val.isEmpty) return Dictionary.errorEmptyUsername;
 
